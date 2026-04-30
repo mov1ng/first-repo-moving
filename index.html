@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦌</text></svg>">
+    <title>moving | 个人主页</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="deer-icon" id="deerIcon">🦌</div>
+
+    <div class="menu-btn" id="menuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div id="time" style="position: fixed; right: 90px; bottom: 26px; font-size: 16px; font-weight: bold; color: #666;"></div>
+
+    <div style="position: fixed; top: 20px; right: 20px; z-index: 100;">
+        <a href="#" class="link-btn" style="display: inline-block; padding: 8px 18px; border-radius: 16px; background: #f5f7fa; color: #333; text-decoration: none; font-size: 14px; box-shadow: 3px 3px 6px #d1d9e6, -2px -2px 5px #ffffff;">注册 / 登录</a>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <a href="#">首页</a>
+        <a href="#">关于我</a>
+        <a href="#" class="disabled">作品展示</a>
+        <a href="#" class="disabled">学习记录</a>
+        <a href="#" class="disabled">学习打卡</a>
+        <a href="#">联系我</a>
+    </div>
+    <div class="mask" id="mask"></div>
+
+    <div class="container">
+        <div style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 10;">
+            <div class="control-btn" title="个人主页" style="width:14px;height:14px;border-radius:50%;background:#ff5f57;cursor:pointer;"></div>
+            <div class="control-btn" title="打卡" style="width:14px;height:14px;border-radius:50%;background:#28c840;cursor:pointer;"></div>
+            <div class="control-btn" title="社区" style="width:14px;height:14px;border-radius:50%;background:#ffbd2e;cursor:pointer;"></div>
+        </div>
+
+        <header>
+            <div class="avatar">
+                <img class="myAvatar" src="avatar.jpg" alt="头像">
+                <div class="guestAvatar" style="display:none; font-size:60px; line-height:140px; text-align:center;">🦌</div>
+            </div>
+            <h1 class="nickName"></h1>
+            <p class="school-info descTxt"></p>
+        </header>
+
+        <section>
+            <div style="text-align: center;">
+                <h2 style="font-size: 22px; font-weight: 600; color: #222;">学生学习记录</h2>
+                <p style="font-size: 15px; color: #555; margin-top: 8px;">持续学习，持续进步</p>
+            </div>
+        </section>
+
+        <div class="links">
+            <a href="https://github.com/moving" class="link-btn disabled" style="padding:12px 24px; border-radius:16px; background:#f5f7fa; box-shadow:3px 3px 6px #d1d9e6, -2px -2px 5px #fff;">GitHub</a>
+            <a href="mailto:wyyid_demaporo@163.com" class="link-btn" style="padding:12px 24px; border-radius:16px; background:#f5f7fa; box-shadow:3px 3px 6px #d1d9e6, -2px -2px 5px #fff;">邮箱联系</a>
+        </div>
+    </div>
+
+    <div class="login-mask" id="loginMask">
+        <div class="login-box">
+            <div class="login-close" id="loginClose">×</div>
+            <div class="login-tab">
+                <span class="active" data-tab="login">登录</span>
+                <span data-tab="reg">注册</span>
+            </div>
+
+            <div class="login-content show" id="loginTab">
+                <input type="text" placeholder="请输入账号">
+                <input type="password" placeholder="请输入密码">
+                <button class="login-btn" id="loginBtn">登录</button>
+            </div>
+
+            <div class="login-content" id="regTab">
+                <input type="text" placeholder="请设置账号">
+                <input type="password" placeholder="设置密码">
+                <input type="password" placeholder="确认密码">
+                <button class="login-btn">注册</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
