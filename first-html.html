@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦌</text></svg>">
     <title>moving | 个人主页</title>
+    
     <style>
-        /* 全局初始化 */
         * {
             margin: 0;
             padding: 0;
@@ -14,7 +15,6 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            /* 油画柔和渐变背景 */
             background: linear-gradient(120deg, #e8edf2, #f5f0eb);
             color: #333;
             line-height: 1.7;
@@ -22,11 +22,10 @@
             transition: all 0.3s ease;
         }
 
-        /* 汉堡菜单按钮 右上角 */
         .menu-btn {
             position: fixed;
             top: 20px;
-            right: 20px;
+            left: 20px;
             width: 48px;
             height: 48px;
             background: #fff;
@@ -41,7 +40,6 @@
             z-index: 100;
         }
 
-        /* 三条横线 */
         .menu-btn span {
             display: block;
             width: 24px;
@@ -51,7 +49,6 @@
             transition: 0.3s;
         }
 
-        /* 侧边栏 */
         .sidebar {
             position: fixed;
             top: 0;
@@ -67,12 +64,10 @@
             z-index: 99;
         }
 
-        /* 侧边栏展开状态 */
         .sidebar.active {
             transform: translateX(0);
         }
 
-        /* 侧边栏导航链接 */
         .sidebar a {
             display: block;
             padding: 14px 16px;
@@ -88,7 +83,6 @@
             background: #f5f7fa;
         }
 
-        /* 遮罩层 */
         .mask {
             position: fixed;
             top: 0;
@@ -107,7 +101,6 @@
             visibility: visible;
         }
 
-        /* 主内容容器 */
         .container {
             max-width: 720px;
             margin: 0 auto;
@@ -122,17 +115,24 @@
             margin-bottom: 30px;
         }
 
+        /* 头像样式：适配图片 */
         .avatar {
             width: 140px;
             height: 140px;
-            border-radius: 30px;
-            background: linear-gradient(145deg, #dce4ec, #eef2f5);
+            border-radius: 30px; /* 圆滑边缘，苹果风格 */
+            overflow: hidden; /* 让图片超出部分被裁掉，保持圆角 */
             margin: 0 auto 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 55px;
-            color: #555;
+            background: linear-gradient(145deg, #dce4ec, #eef2f5);
+        }
+
+        /* 图片样式：撑满容器，不变形 */
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         h1 {
@@ -182,17 +182,39 @@
         .links a:hover {
             background-color: #dde4ee;
         }
+        /* 小鹿装饰图标 */
+.deer-icon {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  font-size: 40px;
+  cursor: pointer;
+  z-index: 100;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.15));
+  transition: transform 0.1s ease;
+}
+.deer-icon.clicked {
+  animation: shake 0.4s ease;
+}
+@keyframes shake {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-15deg) scale(1.1); }
+  50% { transform: rotate(15deg) scale(1.1); }
+  75% { transform: rotate(-10deg) scale(1.05); }
+  100% { transform: rotate(0deg) scale(1); }
+}
     </style>
 </head>
+<div class="deer-icon" id="deerIcon">🦌</div>
 <body>
-    <!-- 汉堡菜单按钮 -->
     <div class="menu-btn" id="menuBtn">
         <span></span>
         <span></span>
         <span></span>
     </div>
 
-    <!-- 侧边栏 -->
     <div class="sidebar" id="sidebar">
         <a href="#">首页</a>
         <a href="#">关于我</a>
@@ -201,19 +223,20 @@
         <a href="#">联系我</a>
     </div>
 
-    <!-- 遮罩 -->
     <div class="mask" id="mask"></div>
 
     <div class="container">
         <header>
-            <div class="avatar">👨‍💻</div>
+            <!-- line 144: 这里改成了图片标签 -->
+            <div class="avatar">
+                <img src="avatar.jpg" alt="头像">
+            </div>
             <h1>moving</h1>
             <p class="school-info">白城师范学院 · 计算机科学与技术 23级</p>
         </header>
 
         <section>
             <h2>关于我</h2>
-            <!-- 简介留白 按你要求暂不填写 -->
         </section>
 
         <div class="links">
@@ -223,22 +246,25 @@
     </div>
 
     <script>
-        // 获取元素
         const menuBtn = document.getElementById('menuBtn');
         const sidebar = document.getElementById('sidebar');
         const mask = document.getElementById('mask');
 
-        // 点击展开/关闭侧边栏
         menuBtn.addEventListener('click', () => {
             sidebar.classList.toggle('active');
             mask.classList.toggle('active');
         });
 
-        // 点击遮罩关闭侧边栏
         mask.addEventListener('click', () => {
             sidebar.classList.remove('active');
             mask.classList.remove('active');
         });
+        // 小鹿点击动画
+const deerIcon = document.getElementById('deerIcon');
+deerIcon.addEventListener('click', () => {
+  deerIcon.classList.add('clicked');
+  setTimeout(() => deerIcon.classList.remove('clicked'), 400);
+});
     </script>
 </body>
 </html>
